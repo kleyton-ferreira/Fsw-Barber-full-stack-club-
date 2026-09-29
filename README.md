@@ -1,7 +1,7 @@
 # Projeto Fsw Barber
 
 - [x] Setup do banco 
-- [] Seeding do banco (Colocar dados)
+- [x] Seeding do banco (Colocar dados)
 - [] Introdução ao Next.js
 - [] Tailwind e Shadc
 - [] Git Hooks 
