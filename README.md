@@ -1,3 +1,14 @@
+# Projeto Fsw Barber
+
+- [x] Setup do banco 
+- [] Seeding do banco (Colocar dados)
+- [] Introdução ao Next.js
+- [] Tailwind e Shadc
+- [] Git Hooks 
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
