@@ -160,3 +160,35 @@
     @apply bg-background text-foreground h-full;
   }
 }
+
+@property --border-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+.animated-border.animated-border {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(#000, #000) padding-box,
+    conic-gradient(
+        from var(--border-angle),
+        #334155 0%,
+        #334155 60%,
+        #ffffff 80%,
+        #334155 100%
+      )
+      border-box;
+  animation: border-spin 4s linear infinite;
+  animation-play-state: paused;
+}
+
+.animated-border.animated-border:hover {
+  animation-play-state: running;
+}

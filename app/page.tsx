@@ -6,8 +6,15 @@ import Image from "next/image"
 import { Card, CardContent } from "./_components/ui/card"
 import { Badge } from "./_components/ui/badge"
 import { Avatar, AvatarImage } from "./_components/ui/avatar"
+import { db } from "./_lib/prisma"
+import BarberShopItem from "./_components/barbeshop-item"
+import { getRatingsMap } from "./_lib/reviews"
 
-const page = () => {
+const page = async () => {
+  const barbshops = await db.barbershop.findMany({})
+
+  const ratingsMap = await getRatingsMap()
+
   return (
     <div>
       <Header />
@@ -29,7 +36,11 @@ const page = () => {
           />
         </div>
 
-        <Card className="mt-6 gap-0 overflow-hidden py-0">
+        <h2 className="mt-6 mb-3 text-xs font-bold text-gray-400 uppercase">
+          agendamentos
+        </h2>
+
+        <Card className="gap-0 overflow-hidden py-0">
           <CardContent className="flex p-0">
             {/* ESQUERDA */}
             <div className="flex flex-1 flex-col gap-4 p-5">
@@ -51,6 +62,29 @@ const page = () => {
             </div>
           </CardContent>
         </Card>
+
+        <h2 className="mt-6 mb-3 text-xs font-bold text-gray-400 uppercase">
+          recomendados
+        </h2>
+
+        <div className="flex scrollbar-none gap-4 overflow-x-auto [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <>
+            {barbshops.map((barberItems) => {
+              const rating = ratingsMap.get(barberItems.id) ?? {
+                average: 0,
+                count: 0,
+              }
+              return (
+                <BarberShopItem
+                  key={barberItems.id}
+                  barbshop={barberItems}
+                  average={rating.average}
+                  count={rating.count}
+                />
+              )
+            })}
+          </>
+        </div>
       </div>
     </div>
   )
