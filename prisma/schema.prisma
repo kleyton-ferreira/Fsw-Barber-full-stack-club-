@@ -14,6 +14,21 @@ model User {
   bookings  Booking[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
+  reviews   Review[]
+}
+
+model Review {
+  id           String     @id @default(uuid())
+  rating       Int
+  comment      String?
+  createdAt    DateTime   @default(now())
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+  barbershopId String
+  barbershop   Barbershop @relation(fields: [barbershopId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, barbershopId])
+  @@index([barbershopId])
 }
 
 model Barbershop {
@@ -26,6 +41,7 @@ model Barbershop {
   createdAt   DateTime            @default(now())
   updatedAt   DateTime            @updatedAt
   services    BarbershopService[]
+  reviews     Review[]
 }
 
 model BarbershopService {
