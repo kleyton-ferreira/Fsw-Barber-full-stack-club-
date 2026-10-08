@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Button } from "./ui/button"
 import { Badge } from "./ui/badge"
 import { StarIcon } from "lucide-react"
+import Link from "next/link"
 
 interface BarberShopItemProps {
   barbshop: Barbershop
@@ -48,8 +49,9 @@ const BarberShopItem = ({ barbshop, average, count }: BarberShopItemProps) => {
           <Button
             variant="secondary"
             className="h-12 w-full rounded-xl text-sm font-semibold"
+            asChild
           >
-            Reservar
+            <Link href={`/barbershops/${barbshop.id}`}>Reservar</Link>
           </Button>
         </div>
       </CardContent>
