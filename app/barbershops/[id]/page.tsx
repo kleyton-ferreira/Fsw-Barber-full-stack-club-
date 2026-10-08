@@ -31,18 +31,20 @@ const BarbershopsPage = async ({ params }: BarbershopsPageProps) => {
 
   return (
     <div>
-      <div className="relative h-62.5 w-full">
+      <div className="group relative h-62.5 w-full overflow-hidden">
         <Image
           src={barbershop.imageUrl}
           alt={barbershop.name}
           fill
-          className="object-cover"
+          className="object-cover brightness-75 transition-transform duration-300"
         />
+        {/* Overlay: transparente por padrão, escuro no hover */}
+        <div className="absolute inset-0 bg-transparent transition-colors duration-300 group-hover:bg-black/50" />
 
         <Button
           size="icon"
           variant="secondary"
-          className="absolute top-6 left-5"
+          className="bg-primary hover:bg-primary-foreground hover:text-primary absolute top-6 left-5"
           asChild
         >
           <Link href="/">
@@ -53,7 +55,7 @@ const BarbershopsPage = async ({ params }: BarbershopsPageProps) => {
         <Button
           size="icon"
           variant="secondary"
-          className="absolute top-6 right-5"
+          className="bg-primary hover:bg-primary-foreground hover:text-primary absolute top-6 right-5 text-white"
         >
           <MenuIcon />
         </Button>
