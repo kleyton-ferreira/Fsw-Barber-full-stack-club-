@@ -3,7 +3,7 @@ import Header from "./_components/header"
 import { Button } from "./_components/ui/button"
 import { Input } from "./_components/ui/input"
 import Image from "next/image"
-import { Card, CardContent } from "./_components/ui/card"
+
 import { quickSearchOptions } from "./_constants/search"
 import BookingItens from "./_components/booking-itens"
 import BarberShopsICards from "./_components/barber-shops-cards"
@@ -56,15 +56,6 @@ const Home = async () => {
         {/* COMPONENTS BarberShopsItems */}
         <BarberShopsICards />
       </div>
-      <footer>
-        <Card className="mt-10">
-          <CardContent>
-            <p className="px-5 py-2 text-center text-xs text-slate-400">
-              © 2026 Copyright <span className="font-bold">FSW Barber</span>
-            </p>
-          </CardContent>
-        </Card>
-      </footer>
     </div>
   )
 }

@@ -6,6 +6,7 @@ import { Button } from "@/app/_components/ui/button"
 import { db } from "@/app/_lib/prisma"
 import { getRatingSummary } from "@/app/_lib/reviews"
 import ServiceItem from "@/app/_components/service-item"
+import PhoneItem from "@/app/_components/phone-item"
 
 interface BarbershopsPageProps {
   params: Promise<{ id: string }>
@@ -94,13 +95,19 @@ const BarbershopsPage = async ({ params }: BarbershopsPageProps) => {
         <p className="mb-6 text-justify text-sm"> {barbershops.description} </p>
       </div>
 
-      <div className="p-5">
+      <div className="border-b border-solid p-5">
         <h2 className="mb-4 text-xs font-bold text-gray-400"> Serviços </h2>
         <div className="space-y-4">
           {barbershops.services.map((serv) => (
             <ServiceItem key={serv.id} service={serv} />
           ))}
         </div>
+      </div>
+
+      <div className="p-5">
+        {barbershops.phones.map((phone, index) => (
+          <PhoneItem key={`${phone}-${index}`} phone={phone} />
+        ))}
       </div>
     </div>
   )
