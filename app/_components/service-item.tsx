@@ -11,7 +11,7 @@ const ServiceItem = ({ service }: ServiceItemProps) => {
   return (
     <Card>
       <CardContent className="flex items-center gap-2 pt-2">
-        <div className="relative max-h-[110px] min-h-[110px] max-w-[110px] min-w-[110px]">
+        <div className="relative max-h-27.5 min-h-27.5 max-w-27.5 min-w-27.5">
           <div className="relative mb-2 h-27.5 w-27.5 overflow-hidden rounded-[8px] border border-slate-500 bg-red-400">
             <Image
               src={service.imageUrl}
