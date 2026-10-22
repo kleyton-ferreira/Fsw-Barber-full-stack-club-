@@ -1,13 +1,19 @@
+"use client"
+
 import { Button } from "./ui/button"
-import { CalendarIcon, HomeIcon, LogOutIcon } from "lucide-react"
+import { CalendarIcon, HomeIcon, LogInIcon, LogOutIcon } from "lucide-react"
 import { SheetClose, SheetContent, SheetHeader } from "./ui/sheet"
 import { quickSearchOptions } from "../_constants/search"
-import { Avatar, AvatarImage } from "./ui/avatar"
+// import { Avatar, AvatarImage } from "./ui/avatar"
 import Link from "next/link"
 
 import Image from "next/image"
 
-const SidebarSheet = () => {
+interface SidebarSheetProps {
+  onLoginClick?: () => void
+}
+
+const SidebarSheet = ({ onLoginClick }: SidebarSheetProps) => {
   return (
     // AQUI E O CONTEUDO FILHO DO SHEET
     <SheetContent className="overflow-y-auto p-0">
@@ -17,8 +23,13 @@ const SidebarSheet = () => {
       </SheetHeader>
 
       {/* PERFIL */}
-      <div className="flex items-center gap-3 border-b border-solid px-5 pb-3">
-        <Avatar className="border-primary border-2">
+      <div className="flex items-center justify-between gap-3 border-b border-solid px-5 pb-3">
+        <h2 className="text-base font-bold">Olá, faça seu login!</h2>
+        <Button size="icon" onClick={onLoginClick}>
+          <LogInIcon />
+        </Button>
+
+        {/* <Avatar className="border-primary border-2">
           <AvatarImage src="https://images.unsplash.com/photo-1777827839146-d634aee2c991?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=NHwxMjA3fDA%3D" />
         </Avatar>
 
@@ -27,7 +38,7 @@ const SidebarSheet = () => {
           <p className="text-muted-foreground text-xs">
             kleytondev40@hotmail.com
           </p>
-        </div>
+        </div> */}
       </div>
 
       {/* NAVEGAÇÃO */}

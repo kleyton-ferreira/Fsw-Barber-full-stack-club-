@@ -1,14 +1,13 @@
 import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react"
+import { ChevronLeftIcon, MapPinIcon, StarIcon } from "lucide-react"
 import { Button } from "@/app/_components/ui/button"
 import { db } from "@/app/_lib/prisma"
 import { getRatingSummary } from "@/app/_lib/reviews"
 import ServiceItem from "@/app/_components/service-item"
 import PhoneItem from "@/app/_components/phone-item"
-import { Sheet, SheetTrigger } from "@/app/_components/ui/sheet"
-import SidebarSheet from "@/app/_components/sidebar-sheet"
+import SheetLogin from "@/app/_components/sheet-login"
 
 interface BarbershopsPageProps {
   params: Promise<{ id: string }>
@@ -59,20 +58,8 @@ const BarbershopsPage = async ({ params }: BarbershopsPageProps) => {
           </Link>
         </Button>
 
-        {/* AQUI E O MENU SHEET */}
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button
-              size="icon"
-              variant="secondary"
-              className="bg-primary hover:bg-primary-foreground hover:text-primary absolute top-6 right-5 text-white"
-            >
-              <MenuIcon />
-            </Button>
-          </SheetTrigger>
-
-          <SidebarSheet />
-        </Sheet>
+        {/* AQUI E O MENU SHEETDIALOG */}
+        <SheetLogin />
       </div>
 
       <div className="flex flex-col gap-2 border-b border-solid px-5 pt-6">
